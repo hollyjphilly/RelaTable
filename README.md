@@ -14,7 +14,7 @@ Bonus:
 * tables can self-reference
 
 ## Wireframes & file structure
-<img src="https://i.ibb.co/GkTy44L/Untitled-presentation-1.png" alt="Untitled-presentation-1" border="0">
+<img src="https://i.ibb.co/MnHPJLr/sqlattempt3.png" alt="sqlattempt3" border="0">
 
 ## Architecture and Technology
 * HTML DOM Element
