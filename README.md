@@ -6,8 +6,9 @@ Using RelaTable, users will be able to:
 
 * click and drag to connect two tables (creates reference column(s)) or click the "Connect" button
 * after connection, users can choose the individual connected record(s) via dropdowns
-* click on the reference column to expand and display the connected records in INNER JOIN mode
 * click through the four different JOIN button/filters to see what the result of different joins would be
+* click on the reference column to expand and display the connected records in INNER JOIN mode
+
 
 Bonus:
 * make table names and data editable
