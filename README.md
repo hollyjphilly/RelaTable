@@ -11,13 +11,14 @@ Using RelaTable, users will be able to:
 
 Bonus:
 * make table names and data editable
-* make tables self-referencable
+* tables can self-reference
 
 ## Wireframes & file structure
+<img src="https://i.ibb.co/GkTy44L/Untitled-presentation-1.png" alt="Untitled-presentation-1" border="0">
 
 ## Architecture and Technology
 * HTML DOM Element
-* Native Internal Scroll
 * Pointers Events
+* Native Internal Scroll
 
 ## Implementation Timeline 
