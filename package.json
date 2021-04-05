@@ -1,7 +1,7 @@
 {
-  "name": "js_project_skeleton",
+  "name": "relatable",
   "version": "1.0.0",
-  "description": "skeleton for new JS project",
+  "description": "small JS project to visualize SQL joins",
   "main": "index.js",
   "browserslist": [
     "last 1 version",
@@ -15,7 +15,6 @@
   },
   "author": "mrcjbradley",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/plugin-proposal-optional-chaining": "^7.13.12",
@@ -37,5 +36,13 @@
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollyjphilly/RelaTable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hollyjphilly/RelaTable/issues"
+  },
+  "homepage": "https://github.com/hollyjphilly/RelaTable#readme"
 }
