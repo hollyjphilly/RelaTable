@@ -20,7 +20,7 @@ Bonus:
 * HTML Drag and Drop API
 
 ## Implementation Timeline 
-Day 1 - basic page with button,table elements, and instructions
-Day 2 - add functionality to buttons (creates reference columns, creates JOIN code and output)
-Day 3 - add expand/contract functionality to reference columns
-Day 4 - add drag and drop functionality to connect tables
+* Day 1 - basic page with button,table elements, and instructions
+* Day 2 - add functionality to buttons (creates reference columns, creates JOIN code and output)
+* Day 3 - add expand/contract functionality to reference columns
+* Day 4 - add drag and drop functionality to connect tables
