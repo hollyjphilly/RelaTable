@@ -5,8 +5,9 @@ Relatable is a SQL visualization playground to help users understand referencing
 Using RelaTable, users will be able to:
 
 * click and drag to connect two tables (creates reference column(s))
-* after connection, users can choose the connected record(s) id(s)
-* click on the reference column to expand and display the connected records
+* after connection, users can choose the individual connected record(s) via dropdowns
+* click on the reference column to expand and display the connected records in INNER JOIN mode
+* click through the four different JOIN button/filters to see what the result of different joins would be
 
 Bonus:
 * make table names and data editable
@@ -17,6 +18,6 @@ Bonus:
 ## Architecture and Technology
 HTML DOM Element
 Native Internal Scroll
-Pointer Events
+Pointers Events
 
 ## Implementation Timeline 
