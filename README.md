@@ -10,7 +10,7 @@ Using RelaTable, users will be able to:
 * click on a reference column to expand and display the connected records
 
 Bonus:
-* display many to many relationships with on a 'many-to-many' tab which includes a third castings table
+* display many to many relationships on a 'many-to-many' tab which includes a third castings table
 
 ## Wireframes & file structure
 <img src="https://i.ibb.co/tp4gGDM/SQLJOINs.png" alt="SQLJOINs" border="0">
@@ -20,3 +20,7 @@ Bonus:
 * HTML Drag and Drop API
 
 ## Implementation Timeline 
+Day 1 - basic page with button,table elements, and instructions
+Day 2 - add functionality to buttons (creates reference columns, creates JOIN code and output)
+Day 3 - add expand/contract functionality to reference columns
+Day 4 - add drag and drop functionality to connect tables
