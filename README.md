@@ -1,9 +1,8 @@
-## Background and Overview 
-Relatable is a SQL visualization playground to help users understand referencing and SQL joins.
+## Relatable
+A SQL visualization playground to help users understand referencing and SQL joins.
 
 ## Functionality and MVPs 
 Using RelaTable, users will be able to:
-
 * click the "Connect" button or drag and drop to create reference columns
 * click through the four different JOIN button/filters to see what the result of different joins would be
 * view the JOIN output in the bottom pane
