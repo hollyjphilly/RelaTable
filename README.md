@@ -16,8 +16,8 @@ Bonus:
 ## Wireframes & file structure
 
 ## Architecture and Technology
-HTML DOM Element
-Native Internal Scroll
-Pointers Events
+* HTML DOM Element
+* Native Internal Scroll
+* Pointers Events
 
 ## Implementation Timeline 
