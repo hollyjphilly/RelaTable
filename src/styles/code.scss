@@ -1,0 +1,17 @@
+#code {
+    background-color: #fff;
+    padding: 20px;
+    height: auto;
+    // border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+    font-family: monospace;
+    font-size: large;
+    color: rgb(167, 167, 167);
+    -webkit-box-shadow: inset 5px 5px 15px -12px rgba(0,0,0,0.5); 
+    box-shadow: inset 0px 5px 15px -12px rgb(154, 154, 154);
+    text-overflow: wrap;
+}
+
+#code:hover {
+    cursor: text;
+}

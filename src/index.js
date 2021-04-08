@@ -1,104 +1,181 @@
 import "./styles/index.scss";
-import "./images/yoda-stitch.jpg";
-import canvasExample from "./scripts/canvas";
-import Square from "./scripts/square";
-import { DOMExample } from "./scripts/DOMExample";
-const currentStateObj = {
-  currentExample: null,
-  currentEventListeners: [],
-};
 
-document.querySelector("#canvas-demo").addEventListener("click", startCanvas);
-document.querySelector("#DOM-demo").addEventListener("click", startDOM);
-
-function startDOM() {
-  unregisterEventListeners();
-  clearDemo();
-  currentStateObj.currentExample = "DOMDEMO";
-  DOMExample();
+const state = {
+  hidden: true,
+  referencesCreated: false,
 }
 
-function startCanvas() {
-  clearDemo();
-  unregisterEventListeners();
-  currentStateObj.currentExample = "CANVASDEMO";
-  const canvas = new canvasExample();
-  canvas.createCanvas();
-  const squares = [new Square(canvas.ctx, canvas.coords, canvas.fillColor)];
+const joinButtons = document.querySelectorAll(".join-btn")
+const wrappedjoinButtons = document.querySelectorAll(".join-btn-wrapper")
 
-  let animating = true;
+document.querySelector("#connect-btn")
+  .addEventListener("click", () => {
+    createReferences()
+    createSQLCode("reset")
+    createDataOutput("reset")
+  });
 
-  const animation = () => {
-    canvas.clearCanvas();
-    if (animating) squares.forEach((sq) => sq.updateSquare(canvas.fillColor));
-    squares.forEach((sq) => sq.drawSquare());
-    window.requestAnimationFrame(animation);
-    squares.forEach((sq) => {
-      if (sq.coords[0] + sq.coords[2] > window.innerWidth)
-        sq.reverseAnimation();
-      if (sq.coords[0] < 0) sq.reverseAnimation();
-    });
-  };
+joinButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    createSQLCode(btn.id)
+    createDataOutput(btn.id)
+  });
+})
 
-  window.requestAnimationFrame(animation);
+wrappedjoinButtons.forEach(wrappedBtn => {
+  wrappedBtn.addEventListener("mouseenter", toggleHelp);
+})
 
-  window.addEventListener("keydown", handleKeyDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "keydown",
-    handleKeyDown,
-  ]);
-
-  window.addEventListener("mousedown", handleMouseDown);
-  currentStateObj.currentEventListeners.push([
-    "window",
-    "mousedown",
-    handleMouseDown,
-  ]);
-
-  function handleKeyDown(event) {
-    if (event.which === 32) {
-      event.preventDefault();
-      squares.forEach((sq) => sq.reverseAnimation());
-      canvas.setColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
-    }
-  }
-
-  function handleMouseDown(event) {
-    event.preventDefault();
-    squares.push(
-      new Square(
-        canvas.ctx,
-        canvas.coords.map((co) => co + 25),
-        canvas.fillColor
-      )
-    );
-    // animating = !animating;
+function toggleHelp() {
+  if (state.hidden && !state.referencesCreated) {
+    const helpText = document.querySelector(".help-text")
+      helpText.style.display = "block"
+      state.hidden = false;
   }
 }
 
-function unregisterEventListeners() {
-  while (currentStateObj.currentEventListeners.length) {
-    let [
-      selector,
-      event,
-      handler,
-    ] = currentStateObj.currentEventListeners.pop();
-    if (selector === "window") {
-      window.removeEventListener(event, handler);
-      console.log(handler);
+function createReferences() {
+  const connectButton = document.getElementById("connect-btn")
+  const connectText = connectButton.firstElementChild
+  const plus = document.getElementById("plus")
+  const helpText = document.querySelector(".help-text")
+
+  document.querySelectorAll("tr .ref:last-child").forEach(tr => {
+    
+    if (tr.classList.contains("hidden")) {
+
+      state.referencesCreated = true;
+
+      tr.classList.remove("hidden")
+
+      connectButton.style.backgroundColor = "rgb(205, 236, 255)"
+
+      connectText.innerHTML = "References created"
+      connectText.style.color = "rgb(40, 113, 158)"
+
+      plus.innerHTML = "✓"
+      plus.style.color = "rgb(40, 113, 158)"
+      plus.style.fontSize = "large"
+
+      joinButtons.forEach(btn => {
+        btn.disabled = false;
+      })
+
+      helpText.style.display = "none";
+      state.hidden = true;
+      
     } else {
-      document.querySelector(selector).removeEventListener(event, handler);
+
+      state.referencesCreated = false;
+      
+      tr.classList.add("hidden")
+
+      connectButton.style.backgroundColor = "rgb(237, 237, 237)"
+
+      connectText.innerHTML = "Create references"
+      connectText.style.color = "inherit"
+
+      plus.innerHTML = "+"
+      plus.style.color = "#5E5E5E"
+      plus.style.fontSize = "larger"
+
+      joinButtons.forEach(btn => {
+        btn.disabled = true;
+      })
+
     }
+  })
+}
+
+function createSQLCode(joinType) {
+  const code = document.getElementById("code")
+  switch (joinType) {
+    case "reset":
+      code.innerHTML = "Click a JOIN button and a SQL query will generate here..."
+      break;
+
+    case "inner":
+      code.innerHTML = "SELECT * <br> FROM actors <br> INNER JOIN movies <br> ON actors.movie_id = movies.id;"
+      break;
+
+    case "left":
+      code.innerHTML = "left"
+      break;
+      
+    case "right":
+      code.innerHTML = "right"
+      break;
+      
+    case "full":
+      code.innerHTML = "full"
+      break;
+  
+    default:
+      return;
   }
 }
 
-function clearDemo() {
-  if (currentStateObj.currentExample === "CANVASDEMO")
-    document.body.removeChild(document.querySelector("canvas"));
-  if (currentStateObj.currentExample === "DOMDEMO") {
-    [...document.querySelectorAll(".card")].forEach((elem) =>
-      document.body.removeChild(elem)
-    );
+function createDataOutput(joinType) {
+  const output = document.getElementById("output-container")
+  const actorsDup = document.getElementById("actors-table").cloneNode(true)
+  const moviesDup = document.getElementById("movies-table").cloneNode(true)
+  actorsDup.id = "output-table"
+  actorsDup.querySelector("#actors-body").id = "output-body"
+  const newTable = actorsDup;
+
+  switch (joinType) {
+    case "reset":
+      output.innerHTML = "None"
+      break;
+
+    case "inner":
+      output.innerHTML = null;
+      newTable.style.color = "black";
+      newTable.style.backgroundColor = "white";
+
+      newTable.deleteRow(5)
+
+      // copy table header over
+      newTable.querySelector("thead tr:first-child")
+        .append(moviesDup.querySelector("th"))
+
+      // copy column headers over
+      const newTableHeaderRow = newTable.rows[1]
+      const moviesHeaderRow = [...moviesDup.rows[1].children]
+      moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
+
+      // copy the movies row over if the movie_id matches the movies.id
+      const actors = ([...actorsDup.rows])
+      const movies = ([...moviesDup.rows])
+      for (let i = 2; i < actors.length; i++) {
+        const actor = actors[i];
+        debugger
+      }
+      
+
+      // if (true) {
+      //     let check = [...actor.children][actor.children.length - 1].innerText
+      //     debugger
+      //   }
+
+      output.append(newTable)
+      break;
+
+    case "left":
+      output.innerHTML = table
+      break;
+      
+    case "right":
+      output.innerHTML = table
+      break;
+      
+    case "full":
+      output.innerHTML = table
+      break;
+  
+    default:
+      return;
   }
 }
+
+

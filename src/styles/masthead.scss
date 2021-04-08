@@ -1,0 +1,24 @@
+#icon {
+  width: 24px;
+}
+
+#masthead {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#lefthead {
+  width: 30%;
+}
+
+#tabhead {
+}
+
+#righthead {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

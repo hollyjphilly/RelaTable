@@ -5,13 +5,206 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <title>JS Project Skeleton</title>
+    <title>RelaTable</title>
   </head>
 
   <body>
-    <button id="canvas-demo">Canvas Demo</button>
-    <button id="DOM-demo">DOM Demo</button>
-    <img width="20%" style="margin:2rem auto"  src="dist/images/yoda-stitch.jpg">
+      <div id="masthead">
+        <div id="lefthead">
+          <h1>RelaTable</h1>
+          <h3>a SQL join visualizer</h3>
+        </div>
+        <div id="tabhead">
+        </div>
+        <div id="righthead">
+          <a href="https://github.com/hollyjphilly?tab=repositories">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              class="icon"
+              viewBox="0 0 496 512" width="24px">
+              <path fill="#525252"
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+              </path>
+            </svg>
+          </a>
+        </div>      
+      </div>
+
+      <div id="main">
+        <div id="sidebar">
+          <div id="divider"></div>
+
+          <button id="connect-btn" class="btn">
+            <h2 id="connect-btn-text">Create references</h2>
+            <h2 id="plus">+</h2>
+          </button>
+
+          <div class="join-btn-wrapper">
+            <button class="btn join-btn" id="inner" disabled>
+              <h2>INNER JOIN</h2>
+              <div class="join-icon"><svg width='40' height='30'>
+                <polygon points='20,5 25,15 20,25 15,15' style='fill:#888888; fill-rule:nonzero;' />
+                <circle cx='15' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent'/>
+                <circle cx='25' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent'/>
+              </svg></div>
+            </button>
+          </div>
+
+          <div class="join-btn-wrapper">
+            <button class="btn join-btn" id="left" disabled>
+              <h2>LEFT JOIN</h2>
+              <div class="join-icon"><svg width='40' height='30'>
+                <circle cx='15' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' />
+                <circle cx='15' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+                <circle cx='25' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+              </svg></div>
+            </button>
+          </div>
+          
+          <div class="join-btn-wrapper">
+            <button class="btn join-btn" id="right" disabled>
+              <h2>RIGHT JOIN</h2>
+              <div class="join-icon"><svg width='40' height='30'>
+                <circle cx='25' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' />
+                <circle cx='15' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+                <circle cx='25' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+              </svg></div>
+            </button>
+          </div>
+          
+          <div class="join-btn-wrapper">
+            <button class="btn join-btn" id="full" disabled>
+              <h2>FULL JOIN</h2>
+              <div class="join-icon"><svg width='40' height='30'>
+                <circle cx='15' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' />
+                <circle cx='25' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' />
+                <circle cx='15' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+                <circle cx='25' cy='15' r='10' stroke='#5e5e5e' stroke-width='2' fill='transparent' />
+              </svg></div>
+            </button>
+          </div>
+
+          <h3 class="help-text hidden">You must create references before you can use the join buttons.</h3>
+
+        </div>
+        
+
+        <div id="content">
+
+          <h2>Database Tables</h2>
+          <div id="tables">
+            <table class="tble" id="actors-table">
+              <thead>
+                <tr>
+                  <th class="tble-cell" colspan="4">Actors</th>
+                </tr>
+              </thead>
+              <tbody id="actors-body">
+                <tr>
+                  <td class="tble-cell ref">id</td>
+                  <td class="tble-cell">first_name</td>
+                  <td class="tble-cell">last_name</td>
+                  <td class="tble-cell ref hidden">movie_id</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">1</td>
+                  <td class="tble-cell">Orlando</td>
+                  <td class="tble-cell">Bloom</td>
+                  <td class="tble-cell ref hidden">1</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">2</td>
+                  <td class="tble-cell">Johnny</td>
+                  <td class="tble-cell">Depp</td>
+                  <td class="tble-cell ref hidden">1</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">3</td>
+                  <td class="tble-cell">Natalie</td>
+                  <td class="tble-cell">Portman</td>
+                  <td class="tble-cell ref hidden">1</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">4</td>
+                  <td class="tble-cell">Holly</td>
+                  <td class="tble-cell">Phillips</td>
+                  <td class="tble-cell ref hidden">null</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">5</td>
+                  <td class="tble-cell">Daniel</td>
+                  <td class="tble-cell">Radcliffe</td>
+                  <td class="tble-cell ref hidden">2</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">6</td>
+                  <td class="tble-cell">Emma</td>
+                  <td class="tble-cell">Watson</td>
+                  <td class="tble-cell ref hidden">2</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="tble" id="movies-table">
+              <thead>
+                <tr>
+                  <th class="tble-cell" colspan="4">Movies</th>
+                </tr>
+              </thead>
+              <tbody id="movies-body">
+                <tr>
+                  <td class="tble-cell ref">id</td>
+                  <td class="tble-cell">title</td>
+                  <td class="tble-cell">year</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">1</td>
+                  <td class="tble-cell">Jurassic Park</td>
+                  <td class="tble-cell">1993</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">2</td>
+                  <td class="tble-cell">Harry Potter</td>
+                  <td class="tble-cell">2001</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">3</td>
+                  <td class="tble-cell">Pirates of the Carribean</td>
+                  <td class="tble-cell">2003</td>
+                </tr>
+                <!-- <tr>
+                  <td class="tble-cell ref">4</td>
+                  <td class="tble-cell">Lord of the Rings</td>
+                  <td class="tble-cell">2001</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">5</td>
+                  <td class="tble-cell">New York, I Love You</td>
+                  <td class="tble-cell">2008</td>
+                </tr>
+                <tr>
+                  <td class="tble-cell ref">6</td>
+                  <td class="tble-cell">The Circle</td>
+                  <td class="tble-cell">2017</td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+
+          <h2>SQL</h2>
+          <div id="code">
+            Click a JOIN button and a SQL query will generate here...
+          </div>
+
+          <h2>Data Output</h2>
+          <div id="output-container">
+            None
+          </div>
+          
+        </div>
+      </div>
+
+
     <script src="./dist/main.js"></script>
   </body>
 </html>

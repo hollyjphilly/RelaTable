@@ -1,0 +1,60 @@
+#sidebar {
+    height: 100%;
+    width: 30%;
+    min-width: 203px;
+    max-width: 300px;
+    background-color: white;
+    padding: 20px;
+    padding-top: 0;
+}
+
+#divider {
+    border-top: 2px solid #5e5e5e;
+}
+
+.btn {
+    white-space: nowrap;
+    display: flex;
+    width: 100%;
+    min-width: 163px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 500ms;
+
+    h2 {
+        padding-right: 15px;
+    }
+}
+
+button:disabled {
+    pointer-events: all;
+    svg {
+        opacity: 0.4;
+    }
+}
+
+.btn:hover:enabled {
+    background-color: rgb(222, 222, 222);
+}
+
+#connect-btn {
+    height: 50px;
+
+    #plus {
+        padding: 0 10px;
+        font-size: x-large;
+        color: #5e5e5e;
+    }
+}
+
+.help-text {
+    color: rgb(40, 113, 158);
+    padding: 10px;
+    background-color: rgb(205, 236, 255);
+    transition: all 2s;
+}
+
