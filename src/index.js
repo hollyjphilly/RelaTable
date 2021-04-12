@@ -5,8 +5,8 @@ const state = {
   referencesCreated: false,
 }
 
-const joinButtons = document.querySelectorAll(".join-btn")
-const wrappedjoinButtons = document.querySelectorAll(".join-btn-wrapper")
+const joinButtons = document.querySelectorAll(".join-btn");
+const wrappedjoinButtons = document.querySelectorAll(".join-btn-wrapper");
 
 document.querySelector("#connect-btn")
   .addEventListener("click", () => {
@@ -68,14 +68,14 @@ function createReferences() {
 
       state.referencesCreated = false;
       
-      tr.classList.add("hidden")
+      tr.classList.add("hidden");
 
       connectButton.style.backgroundColor = "rgb(237, 237, 237)"
 
       connectText.innerHTML = "Create references"
       connectText.style.color = "inherit"
 
-      plus.innerHTML = "+"
+      plus.innerHTML = "+";
       plus.style.color = "#5E5E5E"
       plus.style.fontSize = "larger"
 
@@ -99,15 +99,15 @@ function createSQLCode(joinType) {
       break;
 
     case "left":
-      code.innerHTML = "left"
+      code.innerHTML = "SELECT * <br> FROM actors <br> LEFT JOIN movies <br> ON actors.movie_id = movies.id;"
       break;
       
     case "right":
-      code.innerHTML = "right"
+      code.innerHTML = "SELECT * <br> FROM actors <br> RIGHT JOIN movies <br> ON actors.movie_id = movies.id;"
       break;
       
     case "full":
-      code.innerHTML = "full"
+      code.innerHTML = "SELECT * <br> FROM actors <br> FULL JOIN movies <br> ON actors.movie_id = movies.id;"
       break;
   
     default:
@@ -115,62 +115,76 @@ function createSQLCode(joinType) {
   }
 }
 
+function joinMoviesOnActors(newTable, output, moviesDup) {
+  // cycle through each of the actor rows
+  for (let i = 0; i < newTable.rows.length; i++) {
+    if (i < 2) { // copy column headers over
+      const newTableHeaderRow = newTable.rows[i]
+      const moviesHeaderRow = [...moviesDup.rows[i].children]
+      moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
+    } else { // look at the row's movie_id
+      const row = newTable.rows[i];
+      const cells = [...row.children];
+      const numCells = cells.length;
+      const movie_id = cells[numCells-1].innerText
+
+      // append the appropiate movie row's cells
+      if (movie_id != "null") {
+        const moviesRow = [...moviesDup.rows[parseInt(movie_id)+1].children]
+        moviesRow.forEach(cell => row.append(cell.cloneNode(true)))
+      }
+    }
+  }
+
+  output.append(newTable)
+}
+
 function createDataOutput(joinType) {
   const output = document.getElementById("output-container")
   const actorsDup = document.getElementById("actors-table").cloneNode(true)
   const moviesDup = document.getElementById("movies-table").cloneNode(true)
-  actorsDup.id = "output-table"
-  actorsDup.querySelector("#actors-body").id = "output-body"
   const newTable = actorsDup;
+  newTable.id = "output-table"
+  newTable.querySelector("#actors-body").id = "output-body"
+  newTable.style.color = "black";
+  newTable.style.backgroundColor = "white";
+
+    let tr = document.createElement("tr")
+    let blank = document.createElement("td")
+    blank.setAttribute("colspan", "4")
+    tr.append(blank)
 
   switch (joinType) {
     case "reset":
-      output.innerHTML = "None"
+      output.innerHTML = "None";
       break;
-
-    case "inner":
-      output.innerHTML = null;
-      newTable.style.color = "black";
-      newTable.style.backgroundColor = "white";
-
-      newTable.deleteRow(5)
-
-      // copy table header over
-      newTable.querySelector("thead tr:first-child")
-        .append(moviesDup.querySelector("th"))
-
-      // copy column headers over
-      const newTableHeaderRow = newTable.rows[1]
-      const moviesHeaderRow = [...moviesDup.rows[1].children]
-      moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
-
-      // copy the movies row over if the movie_id matches the movies.id
-      const actors = ([...actorsDup.rows])
-      const movies = ([...moviesDup.rows])
-      for (let i = 2; i < actors.length; i++) {
-        const actor = actors[i];
-        debugger
-      }
       
-
-      // if (true) {
-      //     let check = [...actor.children][actor.children.length - 1].innerText
-      //     debugger
-      //   }
-
-      output.append(newTable)
+      case "inner":
+      output.innerHTML = null;
+      newTable.deleteRow(5); // delete the null movie_id row
+      joinMoviesOnActors(newTable, output, moviesDup);
       break;
 
     case "left":
-      output.innerHTML = table
+      output.innerHTML = null;
+      joinMoviesOnActors(newTable, output, moviesDup);
       break;
       
     case "right":
-      output.innerHTML = table
+      output.innerHTML = null;
+      newTable.deleteRow(5); // delete the null movie_id row
+      joinMoviesOnActors(newTable, output, moviesDup);
+      let moviesRow = [...moviesDup.rows[2].children]
+      moviesRow.forEach(cell => tr.append(cell.cloneNode(true)))
+      newTable.querySelector("#output-body").prepend(tr)
       break;
       
     case "full":
-      output.innerHTML = table
+      output.innerHTML = null;
+      joinMoviesOnActors(newTable, output, moviesDup);
+      moviesRow = [...moviesDup.rows[2].children]
+      moviesRow.forEach(cell => tr.append(cell.cloneNode(true)))
+      newTable.querySelector("#output-body").append(tr)
       break;
   
     default:

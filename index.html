@@ -94,101 +94,106 @@
 
           <h2>Database Tables</h2>
           <div id="tables">
-            <table class="tble" id="actors-table">
-              <thead>
-                <tr>
-                  <th class="tble-cell" colspan="4">Actors</th>
-                </tr>
-              </thead>
-              <tbody id="actors-body">
-                <tr>
-                  <td class="tble-cell ref">id</td>
-                  <td class="tble-cell">first_name</td>
-                  <td class="tble-cell">last_name</td>
-                  <td class="tble-cell ref hidden">movie_id</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">1</td>
-                  <td class="tble-cell">Orlando</td>
-                  <td class="tble-cell">Bloom</td>
-                  <td class="tble-cell ref hidden">1</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">2</td>
-                  <td class="tble-cell">Johnny</td>
-                  <td class="tble-cell">Depp</td>
-                  <td class="tble-cell ref hidden">1</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">3</td>
-                  <td class="tble-cell">Natalie</td>
-                  <td class="tble-cell">Portman</td>
-                  <td class="tble-cell ref hidden">1</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">4</td>
-                  <td class="tble-cell">Holly</td>
-                  <td class="tble-cell">Phillips</td>
-                  <td class="tble-cell ref hidden">null</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">5</td>
-                  <td class="tble-cell">Daniel</td>
-                  <td class="tble-cell">Radcliffe</td>
-                  <td class="tble-cell ref hidden">2</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">6</td>
-                  <td class="tble-cell">Emma</td>
-                  <td class="tble-cell">Watson</td>
-                  <td class="tble-cell ref hidden">2</td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="tble" id="movies-table">
-              <thead>
-                <tr>
-                  <th class="tble-cell" colspan="4">Movies</th>
-                </tr>
-              </thead>
-              <tbody id="movies-body">
-                <tr>
-                  <td class="tble-cell ref">id</td>
-                  <td class="tble-cell">title</td>
-                  <td class="tble-cell">year</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">1</td>
-                  <td class="tble-cell">Jurassic Park</td>
-                  <td class="tble-cell">1993</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">2</td>
-                  <td class="tble-cell">Harry Potter</td>
-                  <td class="tble-cell">2001</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">3</td>
-                  <td class="tble-cell">Pirates of the Carribean</td>
-                  <td class="tble-cell">2003</td>
-                </tr>
-                <!-- <tr>
-                  <td class="tble-cell ref">4</td>
-                  <td class="tble-cell">Lord of the Rings</td>
-                  <td class="tble-cell">2001</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">5</td>
-                  <td class="tble-cell">New York, I Love You</td>
-                  <td class="tble-cell">2008</td>
-                </tr>
-                <tr>
-                  <td class="tble-cell ref">6</td>
-                  <td class="tble-cell">The Circle</td>
-                  <td class="tble-cell">2017</td>
-                </tr> -->
-              </tbody>
-            </table>
+            <div class="table-wrapper">
+              <table class="tble" id="actors-table">
+                <thead>
+                  <tr>
+                    <th class="tble-cell" colspan="4">Actors</th>
+                  </tr>
+                  <tr>
+                    <th class="tble-cell ref" colspan="1">id</th>
+                    <th class="tble-cell" colspan="1">first_name</th>
+                    <th class="tble-cell" colspan="1">last_name</th>
+                    <th class="tble-cell ref hidden" colspan="1">movie_id</th>
+                  </tr>
+                </thead>
+                <tbody id="actors-body">
+                  <tr>
+                    <td class="tble-cell ref">1</td>
+                    <td class="tble-cell">Orlando</td>
+                    <td class="tble-cell">Bloom</td>
+                    <td class="tble-cell ref hidden">3</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">2</td>
+                    <td class="tble-cell">Johnny</td>
+                    <td class="tble-cell">Depp</td>
+                    <td class="tble-cell ref hidden">3</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">3</td>
+                    <td class="tble-cell">Natalie</td>
+                    <td class="tble-cell">Portman</td>
+                    <td class="tble-cell ref hidden">3</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">4</td>
+                    <td class="tble-cell">Holly</td>
+                    <td class="tble-cell">Phillips</td>
+                    <td class="tble-cell ref hidden">null</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">5</td>
+                    <td class="tble-cell">Daniel</td>
+                    <td class="tble-cell">Radcliffe</td>
+                    <td class="tble-cell ref hidden">2</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">6</td>
+                    <td class="tble-cell">Emma</td>
+                    <td class="tble-cell">Watson</td>
+                    <td class="tble-cell ref hidden">2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="tble" id="movies-table">
+                <thead>
+                  <tr>
+                    <th class="tble-cell" colspan="4">Movies</th>
+                  </tr>
+                  <tr>
+                    <th class="tble-cell ref" colspan="1">id</th>
+                    <th class="tble-cell" colspan="1">title</th>
+                    <th class="tble-cell" colspan="1">year</th>
+                  </tr>
+                </thead>
+                <tbody id="movies-body">
+                  <tr>
+                    <td class="tble-cell ref">1</td>
+                    <td class="tble-cell">Jurassic Park</td>
+                    <td class="tble-cell">1993</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">2</td>
+                    <td class="tble-cell">Harry Potter</td>
+                    <td class="tble-cell">2001</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">3</td>
+                    <td class="tble-cell">Pirates of the Carribean</td>
+                    <td class="tble-cell">2003</td>
+                  </tr>
+                  <!-- <tr>
+                    <td class="tble-cell ref">4</td>
+                    <td class="tble-cell">Lord of the Rings</td>
+                    <td class="tble-cell">2001</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">5</td>
+                    <td class="tble-cell">New York, I Love You</td>
+                    <td class="tble-cell">2008</td>
+                  </tr>
+                  <tr>
+                    <td class="tble-cell ref">6</td>
+                    <td class="tble-cell">The Circle</td>
+                    <td class="tble-cell">2017</td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <h2>SQL</h2>
@@ -198,7 +203,7 @@
 
           <h2>Data Output</h2>
           <div id="output-container">
-            None
+
           </div>
           
         </div>
