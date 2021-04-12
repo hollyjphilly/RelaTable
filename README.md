@@ -11,7 +11,7 @@ Using RelaTable, users will be able to:
 Bonus:
 * display many to many relationships on a 'many-to-many' tab which includes a third castings table
 
-## Wireframes & file structure
+## Wireframes
 <img src="https://i.ibb.co/tp4gGDM/SQLJOINs.png" alt="SQLJOINs" border="0">
 
 ## Architecture and Technology
