@@ -58,3 +58,12 @@ button:disabled {
     transition: all 2s;
 }
 
+#instructions {
+    font-size: 14px;
+    h2 {
+        padding-top: 10px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+}
+
