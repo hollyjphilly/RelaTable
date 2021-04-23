@@ -115,28 +115,39 @@ function createSQLCode(joinType) {
   }
 }
 
-function joinMoviesOnActors(newTable, output, moviesDup) {
+function sleep(ms) {
+  return new Promise(
+    resolve => setTimeout(resolve, ms)
+  );
+}
+
+async function joinMoviesOnActors(newTable, output, moviesDup) {
+  output.append(newTable)
+  let timer = 0;
   // cycle through each of the actor rows
   for (let i = 0; i < newTable.rows.length; i++) {
     if (i < 2) { // copy column headers over
       const newTableHeaderRow = newTable.rows[i]
       const moviesHeaderRow = [...moviesDup.rows[i].children]
       moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
+      
     } else { // look at the row's movie_id
       const row = newTable.rows[i];
       const cells = [...row.children];
       const numCells = cells.length;
       const movie_id = cells[numCells-1].innerText
-
+      
       // append the appropiate movie row's cells
       if (movie_id != "null") {
         const moviesRow = [...moviesDup.rows[parseInt(movie_id)+1].children]
-        moviesRow.forEach(cell => row.append(cell.cloneNode(true)))
+        moviesRow.forEach(cell => {
+          row.append(cell.cloneNode(true));
+        });
+        
       }
     }
+    await sleep(2000);
   }
-
-  output.append(newTable)
 }
 
 function createDataOutput(joinType) {

@@ -47,6 +47,7 @@
     border-color:inherit;
     text-align:left;
     vertical-align:top;
+    transition: display 2s;
 }
 
 .tble .ref {
@@ -66,4 +67,8 @@
     display: none;
 }
 
+.null {
+    font-style: italic;
+    color: rgb(194, 194, 194);
+}
 
