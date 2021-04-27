@@ -1,7 +1,7 @@
 #sidebar {
     height: 100%;
     width: 30%;
-    min-width: 203px;
+    min-width: 220px;
     max-width: 300px;
     background-color: white;
     padding: 20px;
@@ -17,16 +17,27 @@
     display: flex;
     width: 100%;
     min-width: 163px;
+    min-height: 52px;
     margin: 10px 0;
     padding: 10px;
     border-radius: 10px;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    transition: background-color 500ms;
+    transition: all 500ms;
 
     h2 {
         padding-right: 15px;
+    }
+
+    h2.hover-info {
+        color: #5e5e5e;
+        font-style: italic;
+        font-size: smaller;
+        padding-left: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -72,9 +83,29 @@ button:disabled {
     fill-rule:nonzero;
 }
 
-#details {
-    margin-top: 25px;
-    font-style: italic;
-    color: #888888;
+#learnmore {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    ul {
+        padding-right: 15px;
+    }
+
+    li {
+        margin-bottom: 5px;
+    }
+
+    a {
+        text-decoration: none;
+        color: rgb(55, 149, 223);
+        margin-bottom: 5px;
+    }
 }
+
+
 

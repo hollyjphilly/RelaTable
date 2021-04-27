@@ -18,7 +18,13 @@
         <div id="tabhead">
         </div>
         <div id="righthead">
-          <h3>hello.hollyphillips@gmail.com</h3>
+          <div>
+            <h3>Holly Phillips</h3>
+            <h3>hello.hollyphillips@gmail.com</h3>
+          </div>
+          <a href="https://hollyjphilly.github.io/" target="_blank">
+            <img src="./dist/images/portfolio_icon.png" alt="Portfolio"></img>
+          </a>
           <a href="https://www.linkedin.com/in/hollyjphillips/" target="_blank">
             <svg width="24px" viewBox="0 0 34 34" class="icon">
               <path
@@ -37,9 +43,7 @@
               </path>
             </svg>
           </a>
-          <a href="https://hollyjphilly.github.io/" target="_blank">
-            <img src="./dist/images/portfolio_icon.png" alt="Portfolio"></img>
-          </a>
+          
         </div>      
       </div>
 
@@ -53,7 +57,11 @@
           </button>
 
           <div class="join-btn-wrapper">
-            <button class="btn join-btn" id="inner" disabled>
+            <button
+              class="btn join-btn" 
+              id="inner"
+              title="Returns matching, referenced rows"
+              disabled>
               <h2>INNER JOIN</h2>
               <div class="join-icon"><svg width='40' height='30'>
                 <polygon points='20,5 25,15 20,25 15,15' class="center-fill"/>
@@ -64,7 +72,11 @@
           </div>
 
           <div class="join-btn-wrapper">
-            <button class="btn join-btn" id="left" disabled>
+            <button
+              class="btn join-btn"
+              id="left"
+              title="Returns left table + referenced rows"
+              disabled>
               <h2>LEFT JOIN</h2>
               <div class="join-icon"><svg width='40' height='30'>
                 <circle cx='15' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' class="left-fill"/>
@@ -75,7 +87,11 @@
           </div>
           
           <div class="join-btn-wrapper">
-            <button class="btn join-btn" id="right" disabled>
+            <button
+              class="btn join-btn"
+              id="right"
+              title="Returns right table + referenced rows"
+              disabled>
               <h2>RIGHT JOIN</h2>
               <div class="join-icon"><svg width='40' height='30'>
                 <circle cx='25' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' class="right-fill"/>
@@ -86,7 +102,11 @@
           </div>
           
           <div class="join-btn-wrapper">
-            <button class="btn join-btn" id="full" disabled>
+            <button
+              class="btn join-btn"
+              id="full"
+              title="Returns both tables with references"
+              disabled>
               <h2>FULL JOIN</h2>
               <div class="join-icon"><svg width='40' height='30'>
                 <circle cx='15' cy='15' r='10' stroke='#888888' stroke-width='2' fill='#888888' class="all" />
@@ -103,6 +123,13 @@
             Click 'Create References' to build relationships
             between the actors and their movies. Then, click through the 
             JOIN buttons to see their queries and their output.
+          </div>
+          <div id="learnmore">
+            <h1>Learn More</h1>
+            <h2><ul>
+              <li><a href="#" target="_blank">• One-to-Many Relationships</a></li>
+              <li><a href="#" target="_blank">• Many-to-Many Relationships</a></li>
+            </h2></ul>
           </div>
         </div>
         

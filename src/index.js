@@ -5,6 +5,7 @@ const state = {
   hidden: true,
   referencesCreated: false,
   last: "",
+  lastId: "",
 }
 
 const joinButtons = document.querySelectorAll(".join-btn");
@@ -24,6 +25,12 @@ joinButtons.forEach(btn => {
     createSQLCode(btn.id)
     createDataOutput(btn.id)
   });
+  btn.addEventListener("mouseenter", () => {
+    addButtonText(btn.id)
+  })
+  btn.addEventListener("mouseleave", () => {
+    removeButtonText(btn.id)
+  })
 })
 
 wrappedjoinButtons.forEach(wrappedBtn => {
@@ -133,16 +140,13 @@ async function joinMoviesOnActors(newTable, output, moviesDup) {
   let timer = 0;
   // cycle through each of the actor rows
   for (let i = 0; i < newTable.rows.length; i++) {
-    console.log("i",i)
     if (i < 2) { // copy column headers over
       const newTableHeaderRow = newTable.rows[i]
       const moviesHeaderRow = [...moviesDup.rows[i].children]
-      console.log("new Table Header", newTableHeaderRow, "movies Header", moviesHeaderRow)
       moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
       
     } else { // look at the row's movie_id
       const row = newTable.rows[i];
-      console.log("row",row)
       const cells = [...row.children];
       const numCells = cells.length;
       const movie_id = cells[numCells-1].innerText;
@@ -150,10 +154,8 @@ async function joinMoviesOnActors(newTable, output, moviesDup) {
 
       // append the appropiate movie row's cells
       if (movie_id <= 3) {
-        console.log("moviesDup", moviesDup.rows, "row", row, "movie_id", movie_id)
         const moviesRow = [...moviesDup.rows[parseInt(movie_id)+1].children]
         moviesRow.forEach(cell => {
-          console.log("appending cell", cell.innerText, "to row", row)
           row.append(cell.cloneNode(true));
         });
 
@@ -185,6 +187,45 @@ function changeButtonFill(className) {
     })
   state.last = className;
 };
+
+function removeButtonText(buttonId) {
+    const button = document.querySelector(`#${buttonId}`)
+    button.children[0].innerText = `${buttonId.toUpperCase()} JOIN`
+    button.children[0].classList.remove("hover-info")
+    button.children[1].classList.remove("hidden")
+}
+
+function addButtonText(buttonId) {
+    const button = document.querySelector(`#${buttonId}`)
+    switch (buttonId) {
+      case "inner":
+        button.children[0].innerText = "Returns matching, referenced rows"
+        button.children[0].classList.add("hover-info");
+        button.children[1].classList.add("hidden");
+        break;
+
+      case "left":
+        button.children[0].innerText = "Returns left table + referenced rows"
+        button.children[0].classList.add("hover-info");
+        button.children[1].classList.add("hidden");
+        break;
+
+      case "right":
+        button.children[0].innerText = "Returns right table + referenced rows"
+        button.children[0].classList.add("hover-info");
+        button.children[1].classList.add("hidden");
+        break;
+
+      case "full":
+        button.children[0].innerText = "Returns both tables with references"
+        button.children[0].classList.add("hover-info");
+        button.children[1].classList.add("hidden");
+        break;
+    
+      default:
+        break;
+    }
+}
 
 function highlightTables(joinType) {
   switch (joinType) {
@@ -302,7 +343,6 @@ async function addJurassicPark(newTable, moviesDup) {
   await sleep(500);
   newTable.append(document.createElement('tr'));
   const row = newTable.rows[newTable.rows.length - 1];
-  console.log(row);
   const td = document.createElement('td');
   td.setAttribute("colspan", "4");
   td.className = "tble-cell null";
