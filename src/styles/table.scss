@@ -29,6 +29,7 @@
     overflow:hidden;
     padding:5px 5px;
     word-break:normal;
+    white-space: nowrap;
 }
 
 .tble th{
@@ -44,7 +45,7 @@
 }
 
 .tble .tble-cell {
-    border-color:inherit;
+    border-color: black;
     text-align:left;
     vertical-align:top;
     transition: display 2s;
@@ -67,8 +68,8 @@
     display: none;
 }
 
-.null {
+.tble .null {
     font-style: italic;
     color: rgb(194, 194, 194);
+    text-align: center;
 }
-

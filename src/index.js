@@ -1,8 +1,10 @@
 import "./styles/index.scss";
+import "./images/portfolio_icon.png";
 
 const state = {
   hidden: true,
   referencesCreated: false,
+  last: "",
 }
 
 const joinButtons = document.querySelectorAll(".join-btn");
@@ -13,6 +15,8 @@ document.querySelector("#connect-btn")
     createReferences()
     createSQLCode("reset")
     createDataOutput("reset")
+    highlightTables("reset")
+    changeButtonFill()
   });
 
 joinButtons.forEach(btn => {
@@ -122,35 +126,114 @@ function sleep(ms) {
 }
 
 async function joinMoviesOnActors(newTable, output, moviesDup) {
+  [...newTable.rows].forEach(row => {
+    row.removeAttribute('style');
+  })
   output.append(newTable)
   let timer = 0;
   // cycle through each of the actor rows
   for (let i = 0; i < newTable.rows.length; i++) {
+    console.log("i",i)
     if (i < 2) { // copy column headers over
       const newTableHeaderRow = newTable.rows[i]
       const moviesHeaderRow = [...moviesDup.rows[i].children]
+      console.log("new Table Header", newTableHeaderRow, "movies Header", moviesHeaderRow)
       moviesHeaderRow.forEach(cell => newTableHeaderRow.append(cell))
       
     } else { // look at the row's movie_id
       const row = newTable.rows[i];
+      console.log("row",row)
       const cells = [...row.children];
       const numCells = cells.length;
-      const movie_id = cells[numCells-1].innerText
-      
+      const movie_id = cells[numCells-1].innerText;
+      await sleep(500);
+
       // append the appropiate movie row's cells
-      if (movie_id != "null") {
+      if (movie_id <= 3) {
+        console.log("moviesDup", moviesDup.rows, "row", row, "movie_id", movie_id)
         const moviesRow = [...moviesDup.rows[parseInt(movie_id)+1].children]
         moviesRow.forEach(cell => {
+          console.log("appending cell", cell.innerText, "to row", row)
           row.append(cell.cloneNode(true));
         });
-        
+
+      } else {
+
+        const td = document.createElement('td');
+        td.setAttribute("colspan", "4");
+        td.className = "tble-cell null";
+        td.innerText = "null";
+        row.append(td);
+
       }
+      
     }
-    await sleep(2000);
+  
   }
 }
 
-function createDataOutput(joinType) {
+function changeButtonFill(className) {
+  if (state.last) document.querySelector(`.${state.last}`).style.fill = "#888888";
+  if (state.last === "all") document.querySelectorAll(`.${state.last}`)
+    .forEach(el => {
+      el.style.fill = "#888888";
+    })
+  if (className) document.querySelector(`.${className}`).style.fill = "rgb(205, 236, 255)";
+  if (className === "all") document.querySelectorAll(`.${className}`)
+    .forEach(el => {
+      el.style.fill = "rgb(205, 236, 255)";
+    })
+  state.last = className;
+};
+
+function highlightTables(joinType) {
+  switch (joinType) {
+    case "reset":
+      document.querySelectorAll("#a1, #a2, #a3, #a4, #a5, #a6, #m1, #m2, #m3")
+      .forEach(el => {
+        el.style.transition = "background 0.1s linear 0s";
+        el.style.backgroundColor = "#fff";
+      });
+      break;
+      
+    case "inner":
+      document.querySelectorAll("#a1, #a2, #a3, #a5, #a6, #m2, #m3")
+      .forEach(el => {
+        el.style.transition = "background 0.15s linear 0s";
+        el.style.backgroundColor = "rgb(205, 236, 255)";
+      });
+      break;
+
+    case "left":
+      document.querySelectorAll("#a1, #a2, #a3, #a4, #a5, #a6")
+      .forEach(el => {
+        el.style.transition = "background 0.15s linear 0s";
+        el.style.backgroundColor = "rgb(205, 236, 255)";
+      });
+      break;
+      
+    case "right":
+      document.querySelectorAll("#m1, #m2, #m3")
+      .forEach(el => {
+        el.style.transition = "background 0.15s linear 0s";
+        el.style.backgroundColor = "rgb(205, 236, 255)";
+      });
+      break;
+      
+    case "full":
+      document.querySelectorAll("#a1, #a2, #a3, #a4, #a5, #a6, #m1, #m2, #m3")
+      .forEach(el => {
+        el.style.transition = "background 0.1s linear 0s";
+        el.style.backgroundColor = "rgb(205, 236, 255)";
+      });
+      break;
+  
+    default:
+      return;
+  }
+}
+
+async function createDataOutput(joinType) {
   const output = document.getElementById("output-container")
   const actorsDup = document.getElementById("actors-table").cloneNode(true)
   const moviesDup = document.getElementById("movies-table").cloneNode(true)
@@ -159,12 +242,12 @@ function createDataOutput(joinType) {
   newTable.querySelector("#actors-body").id = "output-body"
   newTable.style.color = "black";
   newTable.style.backgroundColor = "white";
-
-    let tr = document.createElement("tr")
-    let blank = document.createElement("td")
-    blank.setAttribute("colspan", "4")
-    tr.append(blank)
-
+  
+  let tr = document.createElement("tr")
+  let blank = document.createElement("td")
+  blank.setAttribute("colspan", "4")
+  tr.append(blank)
+  
   switch (joinType) {
     case "reset":
       output.innerHTML = "None";
@@ -172,30 +255,42 @@ function createDataOutput(joinType) {
       
       case "inner":
       output.innerHTML = null;
+      changeButtonFill("center-fill");
+      highlightTables("reset");
+      await sleep(510);
+      highlightTables("inner");
       newTable.deleteRow(5); // delete the null movie_id row
       joinMoviesOnActors(newTable, output, moviesDup);
       break;
 
     case "left":
       output.innerHTML = null;
+      changeButtonFill("left-fill");
+      highlightTables("reset");
+      await sleep(510);
+      highlightTables("left");
       joinMoviesOnActors(newTable, output, moviesDup);
       break;
       
     case "right":
       output.innerHTML = null;
+      changeButtonFill("right-fill");
+      highlightTables("reset");
+      await sleep(510);
+      highlightTables("right");
       newTable.deleteRow(5); // delete the null movie_id row
-      joinMoviesOnActors(newTable, output, moviesDup);
-      let moviesRow = [...moviesDup.rows[2].children]
-      moviesRow.forEach(cell => tr.append(cell.cloneNode(true)))
-      newTable.querySelector("#output-body").prepend(tr)
+      await joinMoviesOnActors(newTable, output, moviesDup);
+      addJurassicPark(newTable, moviesDup);
       break;
       
     case "full":
       output.innerHTML = null;
-      joinMoviesOnActors(newTable, output, moviesDup);
-      moviesRow = [...moviesDup.rows[2].children]
-      moviesRow.forEach(cell => tr.append(cell.cloneNode(true)))
-      newTable.querySelector("#output-body").append(tr)
+      changeButtonFill("all")
+      highlightTables("reset");
+      await sleep(510);
+      highlightTables("full");
+      await joinMoviesOnActors(newTable, output, moviesDup);
+      addJurassicPark(newTable, moviesDup);
       break;
   
     default:
@@ -203,4 +298,16 @@ function createDataOutput(joinType) {
   }
 }
 
-
+async function addJurassicPark(newTable, moviesDup) {
+  await sleep(500);
+  newTable.append(document.createElement('tr'));
+  const row = newTable.rows[newTable.rows.length - 1];
+  console.log(row);
+  const td = document.createElement('td');
+  td.setAttribute("colspan", "4");
+  td.className = "tble-cell null";
+  td.innerText = "null";
+  row.append(td);
+  let moviesRow = [...moviesDup.rows[2].children]
+  moviesRow.forEach(cell => row.append(cell.cloneNode(true)))
+}
