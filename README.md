@@ -4,7 +4,7 @@ A SQL visualizer to help users understand referencing, one-to-many relationships
 <img src="https://i.ibb.co/FD8NG6w/relatable.gif" alt="SQLJOINs" border="0">
 
 ## Functionality and MVPs 
-Using RelaTable, users will be able to:
+Using RelaTable, users are able to:
 * click the "Connect" button to create reference columns
 * click through the four different JOIN button/filters to see what the result of different joins would be
 * view the JOIN output in the bottom pane
