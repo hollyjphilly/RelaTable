@@ -175,10 +175,10 @@ async function joinMoviesOnActors(newTable, output, moviesDup) {
 }
 
 function changeButtonFill(className) {
-  if (state.last) document.querySelector(`.${state.last}`).style.fill = "#888888";
+  if (state.last) document.querySelector(`.${state.last}`).style.fill = "rgb(40, 113, 158)";
   if (state.last === "all") document.querySelectorAll(`.${state.last}`)
     .forEach(el => {
-      el.style.fill = "#888888";
+      el.style.fill = "rgb(40, 113, 158)";
     })
   if (className) document.querySelector(`.${className}`).style.fill = "rgb(205, 236, 255)";
   if (className === "all") document.querySelectorAll(`.${className}`)

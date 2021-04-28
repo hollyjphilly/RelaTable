@@ -3,13 +3,14 @@
     width: 30%;
     min-width: 220px;
     max-width: 300px;
-    background-color: white;
+    background-color: rgb(40, 113, 158);
     padding: 20px;
     padding-top: 0;
+    color: white;
 }
 
 #divider {
-    border-top: 2px solid #5e5e5e;
+    border-top: 2px solid rgb(0, 51, 82);
 }
 
 .btn {
@@ -18,7 +19,7 @@
     width: 100%;
     min-width: 163px;
     min-height: 52px;
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 10px;
     border-radius: 10px;
     align-items: center;
@@ -39,6 +40,10 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+}
+
+.btn:first-of-type {
+    margin-top: 20px;
 }
 
 button:disabled {
@@ -63,23 +68,22 @@ button:disabled {
 }
 
 .help-text {
-    color: rgb(40, 113, 158);
+    color: rgb(158, 40, 40);
     padding: 10px;
-    background-color: rgb(205, 236, 255);
+    background-color: rgb(255, 205, 205);
     transition: all 2s;
 }
 
 #instructions {
     font-size: 14px;
-    h2 {
-        padding-top: 10px;
+    h1 {
+        padding-top: 12px;
         margin-bottom: 5px;
-        font-weight: bold;
     }
 }
 
 .center-fill {
-    fill:#888888;
+    fill:rgb(40, 113, 158);
     fill-rule:nonzero;
 }
 
@@ -102,7 +106,7 @@ button:disabled {
 
     a {
         text-decoration: none;
-        color: rgb(55, 149, 223);
+        color: rgb(152, 215, 255);
         margin-bottom: 5px;
     }
 }
