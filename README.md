@@ -27,5 +27,5 @@ Upcoming Features:
 * users can edit the tables (possible refactor to canvas data grid)
 
 <br><br>
-<img src="https://i.ibb.co/bXqKBRM/technologies.png" alt="Technologies">
+<img src="https://i.ibb.co/bXqKBRM/technologies.png" alt="Technologies"><br>
 This project was built with Javascript, HTML, and CSS.
