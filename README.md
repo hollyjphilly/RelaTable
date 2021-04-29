@@ -1,28 +1,30 @@
-## Relatable
-A SQL visualizer to help users understand referencing, one-to-many relationships, and SQL joins.
+<img src="https://i.ibb.co/phckjfq/relatable-logo-1.png" alt="RelaTable">
+A SQL join visualizer to help users understand referencing, one-to-many relationships, and SQL joins.
+<br>
 
-<img src="https://i.ibb.co/FD8NG6w/relatable.gif" alt="SQLJOINs" border="0">
+<a href="https://hollyjphilly.github.io/RelaTable/" target="_blank"><img src="https://i.ibb.co/yVxMY01/livesite.png" alt="View the Live Site"></a>
+<br>
+<a href="https://hollyjphilly.github.io/RelaTable/" target="_blank">Click here to play with RelaTable.</a>
+<br>
 
-## Functionality and MVPs 
+<img src="https://i.ibb.co/FD8NG6w/relatable.gif" alt="SQLJOINs" border="0"><br>
+
+<img src="https://i.ibb.co/0fggMSW/background.png" alt="Background"><br>
+With this project, I challenged myself to implement an interactive and animated JS project while forgoing the useful tools React and Canvas. I wanted to make something simple yet useful, so a visual tool like RelaTable seemed like a good idea. RelaTable is the tool I wish I had when first learning about relational databases, and I hope others benefit from it too.
+
+I love to create useful things, so I dreamed up a lot of functionality for Relatable at the start. In addition to the base MVP, I wanted to create robust animations, teach both one-to-many and many-to-many relationships, and make the database tables editable. While these are great features that I still plan to implement in the future, I decided to limit myself to the core functionality I knew I could complete within my four day timeline.
+
+<img src="https://i.ibb.co/cQKkk9q/features.png" alt="Features"><br>
 Using RelaTable, users are able to:
-* click the "Connect" button to create reference columns
-* click through the four different JOIN button/filters to see what the result of different joins would be
-* view the JOIN output in the bottom pane
+* Create references between tables
+* Generate SQL code, useful visuals, and animated SQL output data through the click of a button
+* Hover over JOIN buttons to learn about specific JOINs
+* Access additional resources about one-to-many and many-to-many relationships
 
-Future Bonus Features:
-* display many to many relationships on a 'many-to-many' tab which includes a third "castings" table
-* tables are editable (possible refactor to canvas data grid)
+Upcoming Features:
+* includes a third "castings" join table and output to demo many-to-many relationships
+* furthur interaction and animation to show connections between records (highlighting or lines drawn to show connected rows)
+* users can edit the tables (possible refactor to canvas data grid)
 
-## Wireframes
-<img src="https://i.ibb.co/JjcLW0P/Screen-Shot-2021-04-27-at-5-25-47-PM.png" alt="SQLJOINs" border="0">
-
-## Technologies & Challenges
-With this project, I challenged myself to implement an interactive and animated JS project while forgoing the useful tools React and Canvas. I wanted to make something simple and useful, so I dreamed up Relatable, a visual tool that I wished I had access to when I first started learning about relational databases.
-
-I love to create useful things, so I dreamed up a lot of functionality for Relatable at the start. In addition to the base MVPs, I wanted to create robust animations, teach both one-to-many and many-to-many relationships, and make the database tables editable. While these are great features that still plan to implement in the future, I decided to limit myself to the core functionality I knew I could complete within my four day timeline.
-
-## Implementation Timeline 
-* Day 1 - basic page with button,table elements, and instructions
-* Day 2 - add functionality to buttons (creates reference columns, creates JOIN code and output)
-* Day 3 - add styling and animation to buttons and output
-* Day 4 - additional styling, wrap up, and error fixing
+<img src="https://i.ibb.co/bXqKBRM/technologies.png" alt="Technologies"><br>
+This project was built with Javascript, HTML, and CSS.
