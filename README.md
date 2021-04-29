@@ -28,4 +28,4 @@ Upcoming Features:
 
 <br><br>
 <img src="https://i.ibb.co/bXqKBRM/technologies.png" alt="Technologies">
-<p>This project was built with Javascript, HTML, and CSS.</p>
+This project was built with Javascript, HTML, and CSS.
