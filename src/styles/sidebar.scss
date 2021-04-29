@@ -10,7 +10,7 @@
 }
 
 #divider {
-    border-top: 2px solid rgb(0, 51, 82);
+    border-top: 2px solid #5a95b8;
 }
 
 .btn {
@@ -91,6 +91,7 @@ button:disabled {
     position: absolute;
     bottom: 0;
     height: 100px;
+    margin-top: 30px;
 
     h1 {
         margin-bottom: 5px;
@@ -111,5 +112,10 @@ button:disabled {
     }
 }
 
+@media (max-height: 761px) {
+    #learnmore {
+        position: relative;
+    }
+}
 
 
