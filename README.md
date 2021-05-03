@@ -1,5 +1,5 @@
 <img src="https://i.ibb.co/phckjfq/relatable-logo-1.png" alt="RelaTable">
-A SQL join visualizer to help users understand referencing, one-to-many relationships, and SQL joins.
+A SQL join visualizer to help users understand referencing, one-to-many relationships, and SQL join queries.
 <br><br><br>
 
 <a href="https://hollyjphilly.github.io/RelaTable/" target="_blank"><img src="https://i.ibb.co/yVxMY01/livesite.png" alt="View the Live Site"></a>
